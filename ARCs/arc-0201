@@ -1,0 +1,125 @@
+---
+id: <0201>
+period: <Current Period as on 12th February 2024>
+title: <Reclaim Protocol - Bridging Web2 data to Web3>
+author: <Ruchil Sharma, ruchil@creatoros.co>
+discussions-to: <We have had prior discussions with the Algorand team both in person and over calls related to Reclaim>
+company_name: <CreatorOS>
+category: <Infrastructure>
+focus_area: <Identity, Oracle, Social, UX, User Onboarding, zk>
+open_source: <Yes>
+amount_requested: <$50,000 in ALGO>
+status: <Draft>
+---
+
+## Abstract
+Reclaim Protocol makes https traffic verifiable using Zero-Knowledge Proofs, enabling users to generate verifiable credentials from any of their online user profiles. This unlocks unlimited possibilities as no APIs are required to extract the data or no changes to be made to the websites, while guaranteeing data integrity. Web2 user data which was elusive to Web3 till now will be available across dapps on Algorand. This opens up opportunities for a new wave of applications in privacy, sybil resistance, proof of personhood, KYC and many more. Dapp developers can leverage Reclaim protocol to build multiple use cases related to KYC, sybil resistance, proof of personhood, etc on top of Algorand using Reclaim protocol.
+
+### Technical Overview 
+
+Reclaim empowers users to generate Zero-Knowledge Proofs for any online user profile. To generate a claim, users first need to log into the relevant website. This login process, involving an HTTPS request and its subsequent response, is channeled through an HTTPS Proxy Server known as an 'attestor'. This attestor oversees the encrypted data exchange between the user and the website. Subsequently, users provide keys that disclose non-sensitive parts of the request to the attestor. With this, the attestor can view the request in its entirety, barring confidential details like authentication data, and can confirm its legitimacy.
+The website's encrypted response is then processed by a zk-circuit, which identifies a regex match within the encrypted data using a decryption key as a confidential input. The attestor further validates that the zk-circuit's public input was indeed the encrypted data sourced from the website. With these attestations on both the request and the encrypted response, coupled with the zk-proof, any third-party application, whether on-chain or off-chain, can verify the existence of data that exists on the user’s profile.
+
+![img](https://i.ibb.co/MZcwmxS/Screenshot-2023-11-29-at-5-10-39-PM.png)
+
+![img](https://i.ibb.co/HFS9wYC/zkproof.png)
+
+User credentials in Reclaim Protocol are generated and stored completely on the client side. Using Reclaim, users can generate Proofs(Groth16) in less than 10 secs even on a 2015 Android Device! 
+
+
+## Team
+Reclaim Protocol is built by the team at CreatorOS Inc. We are a 20+ member engineering and web3 product development & research team including ZKP researchers and with previous affiliations to Stanford, Microsoft, Meta and Google . We have also built - [Questbook.app](http://Questbook.app), an industry leading on-chain grants management tool that is used by some of the major L1/L2s including Polygon, Solana, Compound, Arbitrum, TON, among others.  CreatorOS is a YC W21 company.
+
+- Madhavan Malolan : CEO
+    - Building in crypto since 2016.
+    - Among first 5 contributors to Plasma (ethereum scaling solution) specifications.
+    - Open source contributor.
+    - ex-Microsoft, Computer Science IIIT-H.
+    - [LinkedIn](https://www.linkedin.com/in/madhavanmalolan/) [Github](https://github.com/madhavanmalolan)
+
+- Abhilash Inumella : Co-founder, Leads Product
+    - Building in Crypto since 2019.
+    - ex-CEO of Samosa Labs (10M users, funded by Sequoia, Xiaomi).
+    - Ex-Google, Ex-Facebook, Computer Science IIIT-H.
+    - [LinkedIn](https://www.linkedin.com/in/abhilash-inumella-89a92421/).
+    
+- Max Allman, Mechanism Design Researcher
+    - PhD from Stanform in Mechanism Design and Game Theory
+    - Co- author of the [Reclaim Whitepaper](https://drive.google.com/file/d/1wmfdtIGPaN9uJBI1DHqN903tP9c_aTG2/view)
+
+- [Kirill Kutsenok](https://www.linkedin.com/in/kirill-kutsenok/), Cryptography & Security Researcher
+- [Adhiraj](https://www.linkedin.com/in/adiwajshing/) Singh: Lead Developer
+- [Sweta](https://www.linkedin.com/in/sweta-shaw/) Shaw: Developer Relations
+- Aleksai Ermishkin: Lead Blockchain Developer
+
+## Experience with Algorand
+While we have not built on Algorand directly in the past, we are actively working with reputed layer - 1 and layer - 2 ecosystems such as Arbitrum, Solana, Sui, SEI to lay out identity infrastructure and empower Dapps developers leverage Web2 user data within their Dapps. Our team has a rich experience of building Web3 products in the past and has built - Questbook.app, an industry leading on-chain grants management tool that is used by some of the major L1/L2s including Polygon, Solana, Compound, Arbitrum, TON, among others.  Additionally, Reclaim protocol has received critical acclaim and appreciation from leading crypto researchers such as Andrew Miller, Sreeram Kannan etc. Our team, primarily comprised of core crypto researchers and talented engineers, has dedicated ~ two years, split between research and development, to advance Reclaim protocol to its production stage. We are confident in our abilities to make significant contributions to Algorand ecosystem using Reclaim. We plan to adopt a milestone based iterative approach across different phases in order to achieve the stated goals of this proposal, while also continually obtaining feedback from the Algorand foundation and community regarding our progress.
+
+## Present Proposal
+1.	**Integrating Reclaim Protocol with Algorand** - We will deploy Reclaim contracts on Algorand, ensuring compatibility with Algorand’s runtime environment. Currently, the Reclaim contracts are implemented in Solidity. The Solidity code can be found [here](https://github.com/reclaimprotocol/solidity-sdk/blob/main/contracts/Reclaim.sol#L229C11-L229C22)
+2.	**Optimising zkProofs**	- We will optimize zkProof verification for Algorand’s constraints, including time, gas and computational resource efficiency.
+3.	**Integration and Testing**	- We will develop and execute a suite of tests, including unit, integration, and stress tests, to validate the functionality and performance. Testing will be automated using a CI/CD pipeline to ensure that each build is verified, which will include code coverage and performance benchmarks.
+4.	**Detailed Documentation and Guides** - We will publish detailed documentation, blogposts and participate in atleast 2 community calls to educate, seed ideas to the Algorand developer community about how to use Reclaim Protocol for implementing Proof of Personhood and Bot protection primitives within their Dapps. Documentation will include a technical guide, API references, and example use cases to facilitate developer integration.
+5. **Adoption** - We will work with the Dapp developers and the Algorand community to ensure atleast 2 dapps within the Algorand ecosystem integrate with Reclaim and that end users leverage Reclaim to produce Verified Credentials 
+
+## Future Blueprint
+**Funding Milestones**
+
+- Reclaim Algorand Integration - $30,000
+    - Successfully deploying of Reclaim Contracts
+    - Effectively deploying Semaphore Contracts
+    - Optimizing zkProof verification for Algorand’s constraints (e.g. speed/gas constraints)
+    - Integrating and Testing proof submission through SDKs, ensuring reliable and consistent interactions with Algorand
+- Comprehensive documentation, blog posts, and community calls within the Algorand ecosystem - $5,000
+- Launch of 2 Dapps on production within the Algorand ecosystem that integrate Reclaim protocol - $10,000
+
+**Detailed Breakdown**
+
+To accomplish the milestones outlined above, the entire project will require 1 Project Manager, 3 Developers, 1 Dev Relations Lead, and 1 Integration Support Developer.
+
+Integration - 3 Developers * 80 hrs * $125 = $30,000
+
+Project Manager - 80 hrs * $120 ~ $10,000
+
+Dev Relations & Post Integration Support - 1 * 50 hrs * $100 = $5,000
+
+We will offer the Algorand ecosystem ongoing development support for three months post-integration led by Integration Support Developer and provided by Reclaim Protocol. Additionally, after the integration is successfully complete, we'll require assistance from the Algorand team for joint marketing efforts to increase Reclaim’s visibility among developers and encourage developers to build novel use cases on top of Algorand using Reclaim. Some of the use cases can be from the following - https://blog.reclaimprotocol.org/posts/usecases/
+
+## **Current Focus Areas**
+
+1. With Reclaim protocol now live on production, we are working towards helping reputed ecosystems such as Algorand that are exploring identity solutions build stronger infrastructure and subsequently, fast forward their growth. 
+
+2. Working with experienced and high-quality Dapp developers to integrate or build novel use cases using Reclaim Protocol. Some of the examples include **[decentralized P2P exchange](https://www.p2px.finance/),** which has already done $250,000 in volumes in just sixteen weeks. Existing adoption can be found here
+
+3. **Perfecting Developer Experience** - Providing a seamless Reclaim integration experience to external developers and users using Reclaim by streamlining various touchpoints such as developer documentation, SDKs, developer journey, user journey etc. 
+
+One of the most important things that we’ve focused on (and what likely sets us apart from other solutions in the market right now) is to not have the user install an app. Most other solutions either expect the user to install a chrome extension and/or install a mobile app. To generate proofs on a dapp using reclaim protocol, the user needn’t install anything. Just scan a QR code and get going. The number one KPI internally is the number of new devs who are able to integrate Reclaim into a project and run it in less than an hour.
+        - if it takes too long to build a provider and integrate - we’ve failed
+        - if there are few devs integrating - we’ve failed
+
+**Development Roadmap**
+
+Our long term vision is to **unlock a new design space empowering builders** to build novel solutions that leverage the identity and credentials of users which they have accrued over time all over the internet. We are also keen to engage closely with the ecosystems/partners who share our vision and can help us realise it. 
+
+To accomplish this, our immediate goal is to provide a seamless Reclaim integration experience to all developers and users using Reclaim by streamlining its various touchpoints such as developer documentation, Reclaim SDKs, developer journey, user journey  etc.
+
+## Benefits for the community
+Integrating Reclaim Protocol with Algorand can offer several significant benefits to Algorand. Here are some detailed pointers on Reclaim can add significant value to Algorand: 
+
+**Enhanced Interoperability**: 
+
+- By allowing Dapps on Algorand to access data from Web2 platforms, we can significantly expand the range of applications and use cases that can be developed on Algorand, especially those focussed around KYC, sybil resistance, proof of personhood, thus driving significant ecosystem growth.
+1. **User-Centric Data Access:**
+    - Reclaim’s commitment to self-sovereignty and user consent in data access aligns with the decentralized and user-centric principles of the Algorand ecosystem. This ensures that Dapps built on Algorand utilizing Reclaim Protocol are adhering to robust data privacy and user consent norms.
+2. **Enabling New Use-Cases:**
+    - By facilitating access to off-chain user data, Reclaim Protocol can enable the development of [new, innovative use-cases](https://blog.reclaimprotocol.org/posts/usecases/) on Algorand, such as Skill IDs, P2P onramp/offramp, Gossip marketplaces, or social Dapps that utilize user data from Web2 platforms.
+3. **Enhanced Developer Mindshare:** 
+    - By facilitating new and unique use cases that leverage off-chain data, Reclaim protocol will attract a broader developer community to Algorand, enriching its ecosystem and increasing its competitive edge
+
+## Additional information
+1. Website - https://www.reclaimprotocol.org/
+2. Demo - https://www.loom.com/share/15b503bcc5354595998f6579f8e81269
+3. Whitepaper - https://link.reclaimprotocol.org/whitepaper-draft
+4. Blog - https://blog.reclaimprotocol.org/
+5. Github - https://github.com/reclaimprotocol/reclaim-sdk
+6. Reclaim At Work (Use cases across different industries) - [https://questbook.notion.site/Reclaim-at-Work-2eeda89565a74e9baf170504108b5319?pvs=74](https://www.notion.so/Reclaim-at-Work-2eeda89565a74e9baf170504108b5319?pvs=21)
